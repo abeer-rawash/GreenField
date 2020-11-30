@@ -7,6 +7,24 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
+
+app.post('/signup', (req,res)=>{
+  let firstName = req.body.info.firstName;
+  let lastName = req.body.info.lastName
+  let username = req.body.info.username
+  let email = req.body.info.email
+  let password = req.body.info.password
+
+
+  console.log(req.body.info.firstName)
+  myDB.con.query(`Insert into users (firstName, lastName, username, email, password) VALUES ('${firstName}','${lastName}','${username}','${email}','${password}')`),(err, result)=>
+    {
+    if (err)
+     throw err;
+    };
+})
+
+
 app.post('/search', function (req, res) {
   let brand = req.body.object.brand;
   let year = req.body.object.year;

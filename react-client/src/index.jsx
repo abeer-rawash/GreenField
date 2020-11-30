@@ -4,7 +4,7 @@ import $ from 'jquery';
 import About from './components/about.jsx';
 import Footer from './components/footer.jsx';
 // import Login from './components/Login.jsx';
-// import Signup from './components/Signup.jsx';
+ import Signup from './components/Signup.jsx';
 import Box from '@material-ui/core/Box' ;
 import LogoText from './components/logotext.jsx'
 import { styled } from '@material-ui/core/styles';
@@ -16,6 +16,7 @@ import Login from './components/login.jsx';
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
+
 
 var MyBox = styled(Box)({
   bgcolor : '#0A194F'
@@ -65,7 +66,7 @@ class App extends React.Component {
         <SimpleContainer/>
          <Footer/>
         </Switch>
-
+        <Signup/>
         </div>
     )}
 }
