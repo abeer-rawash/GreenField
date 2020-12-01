@@ -25,38 +25,58 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {cars: []}
+
+    this.getData = this.getData.bind(this)
   }
 
 
 
-  //Method that handles the "brand" submit input with ajax post request to the server
-     handleSubmit(object) {
-    console.log(object, "Was chosen")
+  getData(object){
     var that = this
-    $.ajax({
-      url: '/search',
-      method: 'POST',
-      data: JSON.stringify({object}),
-      contentType: 'application/json',
-      success:function (data) {
-        console.log("post method successeded")
-        that.updateState(data)
-        console.log(data, "hii im from get for the data in post request react")
-      },
-      error: function () {console.log("brand post method failed")}
-    });
+    console.log(object, "isss chosen")
+  $.ajax({
+    url: '/inventory',
+    method: 'POST',
+    data: JSON.stringify({object}),
+    contentType: 'application/json',
+    success: (data)=> {
+      that.updateState(data)
+      console.log(data)
+    },
+    error: (err)=> {console.log("Post Method Failed")}
+  });
   }
-  //instead of doing a get request use this to get the data in the post request inside the success function
-  updateState(data){
+
+
+  handleSubmit(object) {
+  console.log(object, "Was chosen")
+  this.getData(object);
+}
+
+   updateState(data){
     this.setState({cars: data})
   }
+
+
+  componentDidMount() {
+    var that = this
+  $.ajax({
+    url: '/inventory',
+    method: 'GET',
+    success: (data)=> {
+      that.updateState(data)
+      console.log(data, " im from componentDidMount")
+    },
+    error: (err)=> {console.log("Post Method Failed")}
+  });
+  }
+
 
   render () {
     return (
       <div>
         <Switch>
         <Route exact path="/"> <Homepage/></Route>
-        {/* <ControlledCarousel/> */}
         <Route exact path ='/login'><Login/></Route>
 
         <Route exact path="/inventory" > <Search

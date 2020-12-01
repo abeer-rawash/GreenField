@@ -24,27 +24,32 @@ app.post('/signup', (req,res)=>{
     };
 })
 
+app.get("/inventory", (req, res)=> {
+  let query =  `SELECT * FROM cars`
+    myDB.con.query(query ,(err, results)=> {
+     res.send(results)
+    })
+})
 
-app.post('/search', function (req, res) {
+
+app.post('/inventory', (req, res)=> {
+
   let brand = req.body.object.brand;
   let year = req.body.object.year;
   let colour = req.body.object.colour;
   let price = req.body.object.price;
 
-  if(brand !== "" && year !== "" && colour !== "" && price !== "" && price == "lowestToHighest"){
+
+ if(brand !== "" && year !== "" && colour !== "" && price !== "" && price == "lowestToHighest"){
     let query =  `SELECT * FROM cars WHERE brand = '${brand}' AND year = '${year}' AND colour = '${colour}' ORDER BY Price ASC`
-    console.log(query, "console.log(query)")
-    myDB.con.query(query , function(err, results) {
-    console.log(results, "console.log(results)")
+    myDB.con.query(query ,(err, results)=> {
      res.send(results)
     })
   }
 
   else if(brand !== "" && year !== "" && colour !== "" && price !== "" && price == "highestToLowest"){
     let query =  `SELECT * FROM cars WHERE brand = '${brand}' AND year = '${year}' AND colour = '${colour}' ORDER BY Price DESC`
-    console.log(query, "console.log(query)")
-    myDB.con.query(query , function(err, results) {
-    console.log(results, "console.log(results)")
+    myDB.con.query(query , (err, results)=> {
      res.send(results)
     })
   }
@@ -53,18 +58,15 @@ app.post('/search', function (req, res) {
 
   else if(brand !== "" && year === "" && colour === "" && price === ""){
     let query =  `SELECT * FROM cars WHERE  brand = '${brand}'`
-    console.log(query, "console.log(query)")
-    myDB.con.query(query , function(err, results) {
-    console.log(results, "console.log(results)")
+    myDB.con.query(query , (err, results)=> {
     res.send(results)
+    console.log(results)
     })
  }
 
  else if(brand !== "" && year !== "" && colour === "" && price === ""){
     let query =  `SELECT * FROM cars WHERE  brand = '${brand}' AND year = '${year}'`
-    console.log(query, "console.log(query)")
-    myDB.con.query(query , function(err, results) {
-    console.log(results, "console.log(results)")
+    myDB.con.query(query , (err, results)=> {
     res.send(results)
     })
   }
@@ -73,9 +75,7 @@ app.post('/search', function (req, res) {
 
  else if(brand !== "" && year !== "" && colour !== "" && price === ""){
   let query =  `SELECT * FROM cars WHERE  brand = '${brand}' AND year = '${year}' AND colour = '${colour}'`
-  console.log(query, "console.log(query)")
-  myDB.con.query(query , function(err, results) {
-  console.log(results, "console.log(results)")
+  myDB.con.query(query , (err, results)=> {
   res.send(results)
   })
 }
@@ -84,9 +84,7 @@ app.post('/search', function (req, res) {
 
  else if(brand !== "" && year === "" && colour !== "" && price === ""){
   let query =  `SELECT * FROM cars WHERE brand = '${brand}' AND colour = '${colour}'`
-  console.log(query, "console.log(query)")
-  myDB.con.query(query , function(err, results) {
-  console.log(results, "console.log(results)")
+  myDB.con.query(query , (err, results)=> {
   res.send(results)
   })
 }
@@ -98,4 +96,3 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
 });
-

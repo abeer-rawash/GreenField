@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
- import About from './about.jsx';
+import About from './about.jsx';
 import Footer from './footer.jsx'
 import SimpleContainer from './qout.jsx';
 import LogoText from './logotext.jsx';
