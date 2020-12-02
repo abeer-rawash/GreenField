@@ -98,7 +98,7 @@ export default class Signup extends React.Component {
             <Button
               variant="contained" color="primary"   fullWidth
               onClick = {this.submitHandle}>
-              Sign Up
+              Sign In
             </Button>
           </p>
 

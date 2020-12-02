@@ -8,9 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Typography  from '@material-ui/core/Typography';
-import Wellcome from './Welcom.jsx';
 import Box from '@material-ui/core/Box';
-import About from './about.jsx';
+import Header from './header.jsx';
 
 
 
@@ -44,7 +43,7 @@ const MyGrid =styled(Grid) ({
 })
 
 
-export default class SignIn extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props)
       this.state = {username: "", password: ""}
@@ -53,13 +52,13 @@ export default class SignIn extends React.Component {
     return(
       <div>
         <Grid
-        alignItems ='center'
-        alignContent ='center'
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        justify ='center'
+          alignItems ='center'
+          alignContent ='center'
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          justify ='center'
         >
           <Mypaper>
           <pre>                       <img src = "https://scontent.famm5-1.fna.fbcdn.net/v/t1.0-9/128255422_227091088758997_7058702321390752154_n.jpg?_nc_cat=108&ccb=2&_nc_sid=730e14&_nc_eui2=AeEqFQYaN_ad4f9gK-R_00w0xeq3jpBC8OPF6reOkELw4wT-RH0yveh5W6rCgR4sTojyscWbVB4AC485fRaU9tmG&_nc_ohc=ige5aDJwuj0AX_nHzs2&_nc_oc=AQmh70KqaJc_XuRjsXfrEZ2TFCRNhUgAlWxjabqZ2UOrLvolXf7W1N34wTttPuSPf14&_nc_ht=scontent.famm5-1.fna&oh=aaea198d1eb4f019d2c150895411b2c1&oe=5FE68806"  width="150" height="70"></img>

@@ -16,7 +16,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import CallIcon from '@material-ui/icons/Call';
-import About from './about.jsx';
+import Header from './header.jsx';
 import { lightGreen } from '@material-ui/core/colors';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
@@ -61,7 +61,7 @@ export default function AboutUS() {
     return (
       <div>
 
-        <About/>
+        <Header/>
         <br></br><br></br><br></br><br></br>
         <Grid
           alignItems ='center'

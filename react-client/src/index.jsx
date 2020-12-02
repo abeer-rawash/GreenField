@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import About from './components/about.jsx';
+import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Box from '@material-ui/core/Box' ;
 import LogoText from './components/logotext.jsx'
 import { styled } from '@material-ui/core/styles';
 import Search from './components/Search.jsx';
-import SimpleContainer from './components/qout.jsx';
+import SimpleContainer from './components/aboutUs.jsx';
 import Homepage from './components/Home.jsx';
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
-import SignIn from './components/Lognin.jsx';
+import Login from './components/login.jsx';
 import Signup from './components/Signup.jsx';
 
 
@@ -78,7 +78,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/"> <Homepage/></Route>
-          <Route exact path ='/login'><SignIn/></Route>
+          <Route exact path ='/login'><Login/></Route>
           <Route exact path="/inventory" >
             <Search
             onSubmit = {this.handleSubmit.bind(this)}

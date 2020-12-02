@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import About from './about.jsx';
+import Header from './header.jsx';
 import Footer from './footer.jsx';
-import SimpleContainer from './qout.jsx';
+import SimpleContainer from './aboutUs.jsx';
 import LogoText from './logotext.jsx';
 import Box from '@material-ui/core/Box' ;
 import { styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography' ;
-import SwipeableTextMobileStepper from './photo.jsx';
+import SwipeableTextMobileStepper from './slider.jsx';
 import Grid from '@material-ui/core/Grid';
 
 
@@ -27,7 +27,7 @@ const Homepage = () => {
   return(
     <MyBox bgcolor = '#0A194F'>
       <div>
-      <Grid><About/></Grid><br></br><br></br>
+      <Grid><Header/></Grid><br></br><br></br>
       <Grid><LogoText/></Grid>
       <SwipeableTextMobileStepper/>
       <MyTypography  align='center' variant='subtitle1'>&copy;{new Date().getFullYear()} CarSooq | All right reserved | Terms Of Service | Privacy</MyTypography>

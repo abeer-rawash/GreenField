@@ -45,7 +45,7 @@ const MyTypography = styled(Typography) ({
 
 
 
-class About extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -70,4 +70,4 @@ class About extends React.Component {
     )
   }
 }
-export default About;
+export default Header;

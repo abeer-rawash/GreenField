@@ -13,7 +13,7 @@ import { styled } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import About from './about.jsx';
+import Header from './header.jsx';
 
 
 
@@ -39,7 +39,7 @@ export default function NaveBar() {
     return (
       <div className={classes.root}>
 
-        <About/>
+        <Header/>
 
         <Grid
           alignItems ='center'

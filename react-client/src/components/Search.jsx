@@ -10,7 +10,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography'
 import { styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import About from './about.jsx';
+import Header from './header.jsx';
 
 
 var MyTypography = styled(Typography) ({
@@ -55,7 +55,7 @@ export default class Search extends React.Component {
   render() {
     return(
     <div>
-      <About/><br></br><br></br>
+      <Header/><br></br><br></br>
 
       <FormControl variant="filled">
 
