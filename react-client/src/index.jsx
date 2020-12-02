@@ -21,6 +21,9 @@ import { Route, Switch, Link } from 'react-router-dom';
 var MyBox = styled(Box)({
   bgcolor : '#0A194F'
 })
+
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -86,7 +89,7 @@ class App extends React.Component {
         <SimpleContainer/>
          <Footer/>
         </Switch>
-        <Signup/>
+        {/* <Signup/> */}
         </div>
     )}
 }

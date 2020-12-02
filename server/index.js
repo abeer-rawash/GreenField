@@ -2,10 +2,30 @@ const express = require('express');
 const myDB = require('../database-sql/index.js');
 const bodyParser = require('body-parser');
 const app = express();
+const path = require('path');
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
+
+
+
+
+//Get request to render all cars in stock table when opening the inventory page.
+app.get("/inventory", (req, res)=> {
+  let query =  `SELECT * FROM cars`
+    myDB.con.query(query ,(err, results)=> {
+     res.send(results)
+    })
+})
+
+
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/../react-client/dist/index.html'));
+
+});
+
+
 
 
 app.post('/signup', (req,res)=>{
@@ -17,19 +37,12 @@ app.post('/signup', (req,res)=>{
 
 
   console.log(req.body.info.firstName)
-  myDB.con.query(`Insert into users (firstName, lastName, username, email, password) VALUES ('${firstName}','${lastName}','${username}','${email}','${password}')`),(err, result)=>
-    {
+  myDB.con.query(`Insert into users (firstName, lastName, username, email, password) VALUES ('${firstName}','${lastName}','${username}','${email}','${password}')`),(err, result) => {
     if (err)
      throw err;
     };
 })
 
-app.get("/inventory", (req, res)=> {
-  let query =  `SELECT * FROM cars`
-    myDB.con.query(query ,(err, results)=> {
-     res.send(results)
-    })
-})
 
 
 app.post('/inventory', (req, res)=> {
@@ -43,6 +56,14 @@ app.post('/inventory', (req, res)=> {
  if(brand !== "" && year !== "" && colour !== "" && price !== "" && price == "lowestToHighest"){
     let query =  `SELECT * FROM cars WHERE brand = '${brand}' AND year = '${year}' AND colour = '${colour}' ORDER BY Price ASC`
     myDB.con.query(query ,(err, results)=> {
+     res.send(results)
+    })
+  }
+
+
+  else if(brand == "all"){
+    let query =  `SELECT * FROM cars`
+    myDB.con.query(query , (err, results)=> {
      res.send(results)
     })
   }

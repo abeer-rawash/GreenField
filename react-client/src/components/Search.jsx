@@ -7,7 +7,15 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography'
+import { styled } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import About from './about.jsx'
 
+
+var MyTypography = styled(Typography)({
+  color :'#0A194F'
+})
 export default class Search extends React.Component {
   constructor(props) {
     super(props)
@@ -45,10 +53,14 @@ export default class Search extends React.Component {
 
     return(
 
-  <div>
-Filter by: <FormControl variant="filled">
-        <InputLabel htmlFor="filled-age-native-simple">Brand</InputLabel>
+   <div>
+     <About/><br></br><br></br>
+
+<FormControl variant="filled">
+        <InputLabel htmlFor="filled-age-native-simple" style={{margin: '50px 10px 10px 10px' }}
+        >Brand</InputLabel>
         <Select
+         style={{margin: '50px 10px 10px 10px' }}
           native
           value = {this.state.value}
           onChange = {this.onChangeBrandHandler.bind(this)}
@@ -58,16 +70,18 @@ Filter by: <FormControl variant="filled">
           }}
         >
           <option aria-label="None" value="" />
+          <option value="all">Select All</option>
           <option value="BMW">BMW</option>
           <option value="Ford">Ford</option>
           <option value="Chevrolet">Chevrolet</option>
           <option value="Dodge">Dodge</option>
         </Select>
-      </FormControl>
+      </FormControl> {' '}
 
       <FormControl variant="filled">
-        <InputLabel htmlFor="filled-age-native-simple">Year</InputLabel>
+        <InputLabel htmlFor="filled-age-native-simple" style={{margin: '50px 10px 10px 0px'}}>Year</InputLabel>
         <Select
+        style={{margin: '50px 10px 10px 0px'}}
           native
           value = {this.state.value}
           onChange = {this.onChangeYearHandler.bind(this)}
@@ -77,15 +91,23 @@ Filter by: <FormControl variant="filled">
           }}
         >
           <option aria-label="None" value="" />
+          <option value = "2007">2007</option>
           <option value = "2008">2008</option>
+          <option value = "2010">2010</option>
+          <option value = "2011">2011</option>
           <option value = "2012">2012</option>
+          <option value = "2013">2013</option>
           <option value = "2014">2014</option>
+          <option value = "2017">2017</option>
+          <option value = "2020">2020</option>
+
         </Select>
-      </FormControl>
+      </FormControl>{' '}
 
       <FormControl variant="filled">
-        <InputLabel htmlFor="filled-age-native-simple">Colour</InputLabel>
+        <InputLabel htmlFor="filled-age-native-simple"   style={{margin: '50px 10px 10px 0px'}}>Colour</InputLabel>
         <Select
+        style={{margin: '50px 10px 10px 0px'}}
           native
           value = {this.state.value}
           onChange  = {this.onChangeColourHandler.bind(this)}
@@ -95,17 +117,18 @@ Filter by: <FormControl variant="filled">
           }}
         >
           <option aria-label="None" value="" />
-     <option value = "black">Black</option>
-      <option value = "gray">Gray</option>
-      <option value = "white">White</option>
-      <option value = "blue">Blue</option>
-      <option value = "orange">Orange</option>
+          <option value = "black">Black</option>
+          <option value = "gray">Gray</option>
+          <option value = "white">White</option>
+          <option value = "blue">Blue</option>
+          <option value = "orange">Orange</option>
         </Select>
-      </FormControl>
+      </FormControl>{' '}
 
       <FormControl variant="filled">
-        <InputLabel htmlFor="filled-age-native-simple">Price</InputLabel>
+        <InputLabel htmlFor="filled-age-native-simple" style={{margin: '50px 10px 10px 0px'}}>Price</InputLabel>
         <Select
+        style={{margin: '50px 10px 10px 0px'}}
           native
           value = {this.state.value}
           onChange = {this.onChangePriceHandler.bind(this)}
@@ -120,6 +143,7 @@ Filter by: <FormControl variant="filled">
         </Select>
       </FormControl>
       {list(this.props)}
+      <Grid><MyTypography  align='center' variant='subtitle1'>&copy;{new Date().getFullYear()} CarSooq | All right reserved | Terms Of Service | Privacy</MyTypography></Grid>
   </div>
 
   )}
