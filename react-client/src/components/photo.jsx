@@ -13,37 +13,30 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-
     imgPath:
       'https://images.pexels.com/photos/707046/pexels-photo-707046.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/712618/pexels-photo-712618.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/2710043/pexels-photo-2710043.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
   },
   {
-
     imgPath:
       'https://images.pexels.com/photos/235222/pexels-photo-235222.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
   }
@@ -70,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function SwipeableTextMobileStepper() {
   const classes = useStyles();
   const theme = useTheme();
@@ -91,40 +85,39 @@ function SwipeableTextMobileStepper() {
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
+      <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
+      axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+      index={activeStep}
+      onChangeIndex={handleStepChange}
+      enableMouseEvents
       >
-        {tutorialSteps.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} />
-            ) : null}
-          </div>
-        ))}
+      {tutorialSteps.map((step, index) => (
+      <div key={step.label}>
+      {Math.abs(activeStep - index) <= 2 ? (
+      <img className={classes.img} src={step.imgPath} alt={step.label} />
+      ) : null}
+      </div>
+      ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-            Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Back
-          </Button>
-        }
-      />
+      steps={maxSteps}
+      position="static"
+      variant="text"
+      activeStep={activeStep}
+      nextButton={
+      <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+      Next
+      {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+      </Button>
+      }
+      backButton={
+      <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+      {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+      Back
+      </Button>
+      }/>
     </div>
   );
 }
