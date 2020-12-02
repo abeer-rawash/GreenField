@@ -23,7 +23,7 @@ export default class List extends React.Component {
       <div>
 
       <Grid container
-      direction="row"
+
       justify="flex-start"
       alignItems="flex-start"
        >
@@ -45,12 +45,14 @@ export default class List extends React.Component {
               {this.props.car.brand}     {" $"}{this.props.car.price}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-              {this.props.car.description}   {", with external body colour :"}{this.props.car.colour}
+              {this.props.car.description}   {". External body colour :"}{this.props.car.colour}
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
         </Grid>
+
+
       </Grid>
       </div>
     )}
