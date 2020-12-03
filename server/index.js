@@ -9,8 +9,14 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.post('./disply',(req, res)=>{
-  console.log(req.body.id)
+app.post('/display',(req, res)=>{
+  console.log(req.body.obj.id)
+  let query =  `SELECT * FROM cars WHERE id = '${req.body.obj.id}'`
+    myDB.con.query(query , (err, results)=> {
+     res.send(results)
+     console.log(results,"heloooooo")
+    })
+
 })
 
 

@@ -9,15 +9,53 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import GridList from '@material-ui/core/GridList';
-
-
+import $ from 'jquery';
+import ReactDOM from 'react-dom';
+// import DisplayCars from './displayCar.jsx';
 
 export default class List extends React.Component {
   constructor(props) {
     super(props)
-
+this.state ={
+  idValue :""
+}
   }
+
+
+  onChangeHandle(event){
+    this.setState({
+      idValue:event.target.value
+  })
+}
+
+
+onSubmit(idValue){
+  console.log(this.state.idValue)
+  var that = this
+  var obj = {};
+  obj.id = this.state.idValue;
+  $.ajax({
+    url: '/display',
+    method: 'POST',
+    data: JSON.stringify({obj}),
+    contentType: 'application/json',
+    success: (data)=> {
+      that.updateState(data)
+      console.log(data, " im from onSubmit")
+    },
+    error: (err)=> {console.log("Post Method Failed")}
+  });
+}
+
+updateState(data){
+  this.setState({cars: data})
+}
+
+
+
+
     render(){
+      // console.log(data, "prrrrrrrrrrrrr")
       return (
 
           <Grid container
@@ -47,8 +85,18 @@ export default class List extends React.Component {
                   </Typography>
                   </CardContent>
                 </CardActionArea>
+
+                <input
+                 type= "number"
+                 placeholder= "Enter car Id"
+                 value = {this.state.idValue}
+                onChange={this.onChangeHandle.bind(this)}></input>
+                <Button onClick={this.onSubmit.bind(this)}>show</Button>
               </Card>
             </Grid>
+  {/* <DisplayCars onSubmit = {this.onSubmit}/> */}
           </Grid>
+
+
     )}
 }

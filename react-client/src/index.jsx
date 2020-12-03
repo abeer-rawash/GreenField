@@ -14,6 +14,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
 import Login from './components/login.jsx';
 import Signup from './components/Signup.jsx';
+// import DisplayCars from './components/displayCar.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class App extends React.Component {
 
   getData(object){
     var that = this
+    console.log(object)
 
   $.ajax({
     url: '/inventory',
@@ -76,6 +78,7 @@ class App extends React.Component {
             cars = {this.state.cars}
           /></Route>
           <SimpleContainer/>
+          {/* <DisplayCars/> */}
           <Footer/>
         </Switch>
       </div>

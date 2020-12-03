@@ -12,6 +12,7 @@ import { styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Header from './header.jsx';
 // import Card from './cards.jsx';
+// import DisplayCars from './displayCar.jsx';
 
 
 var MyTypography = styled(Typography) ({
@@ -19,12 +20,6 @@ var MyTypography = styled(Typography) ({
 })
 
 
-const list = (props) => (
-  <div>
-    {props.cars.map((car,id) =>
-      <List key = {id} car = {car}/>)}
-  </div>
-)
 
 
 export default class Search extends React.Component {
@@ -66,6 +61,7 @@ export default class Search extends React.Component {
     <div>
 
       <Header/><br></br><br></br>
+      {/* <DisplayCars/> */}
 {/* <Card/> */}
       <FormControl variant="filled">
 
@@ -165,12 +161,24 @@ export default class Search extends React.Component {
       </FormControl>
 
       {list(this.props)}
+      {/* {displayCars(this.props)} */}
 
       <Grid>
         <MyTypography  align='center' variant='subtitle1'>&copy;{new Date().getFullYear()} CarSooq | All right reserved | Terms Of Service | Privacy</MyTypography>
       </Grid>
+
+
     </div>
 
   )}
 }
+
+const list = (props) => (
+  <div>
+    {props.cars.map((car,id) =>
+      <List key = {id} car = {car}/>)}
+  </div>
+)
+
+
 
