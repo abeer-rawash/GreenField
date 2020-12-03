@@ -11,6 +11,7 @@ import { Grid } from '@material-ui/core';
 import GridList from '@material-ui/core/GridList';
 
 
+
 export default class List extends React.Component {
   constructor(props) {
     super(props)
@@ -18,10 +19,12 @@ export default class List extends React.Component {
   }
     render(){
       return (
-        <div>
+
           <Grid container
+          spacing = "3"
           justify="flex-start"
           alignItems="flex-start"
+          direction = "row"
           >
             <Grid
             key = {this.props.car.id}
@@ -47,6 +50,5 @@ export default class List extends React.Component {
               </Card>
             </Grid>
           </Grid>
-        </div>
     )}
 }

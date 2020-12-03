@@ -9,7 +9,9 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
-
+app.post('./disply',(req, res)=>{
+  console.log(req.body.id)
+})
 
 
 //Get request to render all cars in stock table when opening the inventory page.

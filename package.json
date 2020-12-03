@@ -29,7 +29,7 @@
     "add": "^2.0.6",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "body-parser": "^1.17.2",
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",

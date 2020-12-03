@@ -11,11 +11,20 @@ import Typography from '@material-ui/core/Typography'
 import { styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Header from './header.jsx';
+// import Card from './cards.jsx';
 
 
 var MyTypography = styled(Typography) ({
   color :'#0A194F'
 })
+
+
+const list = (props) => (
+  <div>
+    {props.cars.map((car,id) =>
+      <List key = {id} car = {car}/>)}
+  </div>
+)
 
 
 export default class Search extends React.Component {
@@ -55,8 +64,9 @@ export default class Search extends React.Component {
   render() {
     return(
     <div>
-      <Header/><br></br><br></br>
 
+      <Header/><br></br><br></br>
+{/* <Card/> */}
       <FormControl variant="filled">
 
       <InputLabel htmlFor="filled-age-native-simple" style={{margin: '50px 10px 10px 10px' }}>Brand</InputLabel>
@@ -164,9 +174,3 @@ export default class Search extends React.Component {
   )}
 }
 
-const list = (props) => (
-  <div>
-    {props.cars.map((car,i) =>
-      <List key = {i} car = {car}/>)}
-  </div>
-)

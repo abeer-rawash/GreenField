@@ -15,13 +15,6 @@ import { Route, Switch, Link } from 'react-router-dom';
 import Login from './components/login.jsx';
 import Signup from './components/Signup.jsx';
 
-
-var MyBox = styled(Box)({
-  bgcolor : '#0A194F'
-})
-
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,11 +23,9 @@ class App extends React.Component {
     this.getData = this.getData.bind(this)
   }
 
-
-
   getData(object){
     var that = this
-    console.log(object, "isss chosen")
+
   $.ajax({
     url: '/inventory',
     method: 'POST',
