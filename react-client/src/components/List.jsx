@@ -16,87 +16,76 @@ import ReactDOM from 'react-dom';
 export default class List extends React.Component {
   constructor(props) {
     super(props)
-this.state ={
-  idValue :""
-}
+    this.state = {
+      idValue: ""
+    }
+
   }
 
 
-  onChangeHandle(event){
+  onChangeHandle(event) {
     this.setState({
-      idValue:event.target.value
-  })
+      idValue: event.target.value
+    })
+  }
+
+
+  onSubmit(idValue) {
+    console.log(this.state.idValue)
+    var that = this
+    var obj = {};
+    obj.id = this.state.idValue;
+    $.ajax({
+      url: '/display',
+      method: 'POST',
+      data: JSON.stringify({ obj }),
+      contentType: 'application/json',
+      success: (data) => {
+        that.updateState(data)
+        console.log(data, " im from onSubmit")
+      },
+      error: (err) => { console.log("Post Method Failed") }
+    });
+  }
+
+  updateState(data) {
+    this.setState({ cars: data })
+  }
+  render() {
+
+    return (
+      <Grid
+        container item
+        key={this.props.car.id}
+        xs={4}>
+        <Card>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="200"
+              image={this.props.car.image}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {this.props.car.brand}     {" $"}{this.props.car.price}             {" (ID:"}{this.props.car.id}{")"}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {this.props.car.description}   {". External body colour :"}{this.props.car.colour}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+
+          <input
+            type="number"
+            placeholder="Enter car Id"
+            value={this.state.idValue}
+            onChange={this.onChangeHandle.bind(this)}></input>
+          <Button onClick={this.onSubmit.bind(this)}>show</Button>
+        </Card>
+      </Grid>
+    )
+  }
 }
 
-
-onSubmit(idValue){
-  console.log(this.state.idValue)
-  var that = this
-  var obj = {};
-  obj.id = this.state.idValue;
-  $.ajax({
-    url: '/display',
-    method: 'POST',
-    data: JSON.stringify({obj}),
-    contentType: 'application/json',
-    success: (data)=> {
-      that.updateState(data)
-      console.log(data, " im from onSubmit")
-    },
-    error: (err)=> {console.log("Post Method Failed")}
-  });
-}
-
-updateState(data){
-  this.setState({cars: data})
-}
-
-
-
-
-    render(){
-      // console.log(data, "prrrrrrrrrrrrr")
-      return (
-
-          <Grid container
-          spacing = "3"
-          justify="flex-start"
-          alignItems="flex-start"
-          direction = "row"
-          >
-            <Grid
-            key = {this.props.car.id}
-            item xs={3}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="200"
-                  image={this.props.car.image}
-                  title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                  {this.props.car.brand}     {" $"}{this.props.car.price}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                  {this.props.car.description}   {". External body colour :"}{this.props.car.colour}
-                  </Typography>
-                  </CardContent>
-                </CardActionArea>
-
-                <input
-                 type= "number"
-                 placeholder= "Enter car Id"
-                 value = {this.state.idValue}
-                onChange={this.onChangeHandle.bind(this)}></input>
-                <Button onClick={this.onSubmit.bind(this)}>show</Button>
-              </Card>
-            </Grid>
-  {/* <DisplayCars onSubmit = {this.onSubmit}/> */}
-          </Grid>
-
-
-    )}
-}

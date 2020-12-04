@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography'
 import { styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Header from './header.jsx';
+
 // import Card from './cards.jsx';
 // import DisplayCars from './displayCar.jsx';
 
@@ -57,6 +58,7 @@ export default class Search extends React.Component {
 
 
   render() {
+    console.log("aboooood")
     return(
     <div>
 
@@ -160,7 +162,11 @@ export default class Search extends React.Component {
 
       </FormControl>
 
-      {list(this.props)}
+
+
+
+        {list(this.props) }
+
       {/* {displayCars(this.props)} */}
 
       <Grid>
@@ -174,11 +180,19 @@ export default class Search extends React.Component {
 }
 
 const list = (props) => (
-  <div>
+  <Grid container
+  spacing = {3}
+  justify="flex-start"
+  alignItems="flex-start"
+  direction = "row"
+  >
     {props.cars.map((car,id) =>
       <List key = {id} car = {car}/>)}
-  </div>
+   </Grid>
 )
+
+
+
 
 
 
