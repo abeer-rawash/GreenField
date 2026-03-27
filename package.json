@@ -28,9 +28,9 @@
     "@testing-library/user-event": "^12.2.2",
     "add": "^2.0.6",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.20.4",
     "bootstrap": "^4.5.3",
-    "express": "^4.17.1",
+    "express": "^4.22.1",
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "popper.js": "^1.16.1-lts",
@@ -41,7 +41,7 @@
     "react-dom": "^17.0.1",
     "react-hook-form": "6.12.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.4",
+    "react-scripts": "5.0.1",
     "react-swipeable-views": "^0.13.9",
     "react-test-renderer": "^17.0.1"
   }
